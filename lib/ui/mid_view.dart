@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:weatherme/model/weather_model.dart';
 import 'package:weatherme/utils/Utility.dart';
+import 'package:weatherme/utils/convertIcon.dart';
 
 Widget midView(AsyncSnapshot<WeatherModel> snapshot) {
   var cityName = snapshot.data.name;
@@ -34,10 +36,18 @@ Widget midView(AsyncSnapshot<WeatherModel> snapshot) {
           SizedBox(
             height: 10.0,
           ),
-          Icon(
-            Icons.wb_sunny,
-            size: 150.0,
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: getWeatherIcon(
+                weatherDescription: snapshot.data.weather[0].description,
+                color: Colors.pinkAccent.shade100,
+                size: 150.0),
           ),
+//          Icon(
+//            FontAwesomeIcons.cloud,
+//            size: 150.0,
+//            color: Colors.pinkAccent.shade100,
+//          ),
           Padding(
             padding:
                 const EdgeInsets.symmetric(vertical: 12.0, horizontal: 12.0),
@@ -71,7 +81,7 @@ Widget midView(AsyncSnapshot<WeatherModel> snapshot) {
                       Text(
                           '${snapshot.data.wind.speed.toStringAsFixed(1)} Km/h'),
                       Icon(
-                        Icons.arrow_forward,
+                        FontAwesomeIcons.wind,
                         size: 20.0,
                         color: Colors.brown,
                       ),
@@ -86,7 +96,7 @@ Widget midView(AsyncSnapshot<WeatherModel> snapshot) {
                       Text(
                           '${snapshot.data.main.humidity.toStringAsFixed(0)} %'),
                       Icon(
-                        Icons.hot_tub,
+                        FontAwesomeIcons.solidGrinBeamSweat,
                         size: 20.0,
                         color: Colors.brown,
                       ),
@@ -101,7 +111,7 @@ Widget midView(AsyncSnapshot<WeatherModel> snapshot) {
                       Text(
                           '${snapshot.data.main.tempMax.toStringAsFixed(1)}°C'),
                       Icon(
-                        Icons.wb_sunny,
+                        FontAwesomeIcons.temperatureHigh,
                         size: 20.0,
                         color: Colors.brown,
                       ),
