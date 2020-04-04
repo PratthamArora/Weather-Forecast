@@ -24,9 +24,37 @@ Widget midView(AsyncSnapshot<WeatherModel> snapshot) {
           SizedBox(
             height: 5.0,
           ),
-          Text('${Utils.getFormattedDate(
-            new DateTime.fromMillisecondsSinceEpoch(snapshot.data.dt * 1000),
-          )}'),
+          Text(
+            '${Utils.getFormattedDate(
+              new DateTime.fromMillisecondsSinceEpoch(snapshot.data.dt * 1000),
+            )}',
+            style: TextStyle(
+              fontSize: 14.0,
+            ),
+          ),
+          SizedBox(
+            height: 10.0,
+          ),
+          Icon(
+            Icons.wb_sunny,
+            size: 150.0,
+          ),
+          Padding(
+            padding:
+                const EdgeInsets.symmetric(vertical: 12.0, horizontal: 12.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  '${forecastList.temp.toStringAsFixed(0)}°C',
+                  style: TextStyle(
+                    fontSize: 34.0,
+                  ),
+                ),
+                Text('${snapshot.data.weather[0].description.toUpperCase()}'),
+              ],
+            ),
+          ),
         ],
       ),
     ),
