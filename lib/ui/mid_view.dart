@@ -109,7 +109,7 @@ Widget midView(AsyncSnapshot<WeatherModel> snapshot) {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Text(
-                          '${snapshot.data.main.tempMax.toStringAsFixed(1)}°C'),
+                          '${snapshot.data.main.tempMax.toStringAsFixed(0)}°C'),
                       Icon(
                         FontAwesomeIcons.temperatureHigh,
                         size: 20.0,
