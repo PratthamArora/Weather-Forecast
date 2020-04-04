@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:weatherme/model/weather_model.dart';
+import 'package:weatherme/network/network.dart';
 
 class WeatherForecast extends StatefulWidget {
   @override
@@ -6,6 +8,16 @@ class WeatherForecast extends StatefulWidget {
 }
 
 class _WeatherForecastState extends State<WeatherForecast> {
+  Future<WeatherModel> forecast;
+  String _cityName = "Delhi";
+
+  @override
+  void initState() {
+    super.initState();
+    forecast = Network().getWeatherForecast(cityName: _cityName);
+    forecast.then((weather) => {print(weather.main.feelsLike)});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
